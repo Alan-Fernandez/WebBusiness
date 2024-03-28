@@ -23,7 +23,7 @@ export const Description = () => {
       <button onClick={handleClick} className={buttonStyles}>
         <div className={styles.Description__imageContainer}>
           <Image
-            src="/images/description.jpeg"
+            src="/description.jpeg"
             alt="products marketplace"
             fill
             placeholder='blur'
