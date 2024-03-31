@@ -1,7 +1,8 @@
 import { Roboto } from 'next/font/google'
 import { Header } from 'app/components/shared/Header'
 import { Footer } from 'app/components/shared/Footer'
-import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import 'app/sass/globals.sass'
 
 const roboto = Roboto({
@@ -9,7 +10,6 @@ const roboto = Roboto({
   subsets: ["latin"],
 })
 
-injectSpeedInsights();
 
 export default function RootLayout({
   children,
@@ -22,6 +22,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
