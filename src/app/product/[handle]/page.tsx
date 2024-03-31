@@ -1,30 +1,37 @@
-import { ProductView } from "@/components/product/ProductView"
-import { getProducts } from "@/services/shopify/products"
+import { ProductView } from "app/components/product/ProductView"
+import { getProducts } from "app/services/shopify/products"
 import { redirect } from "next/navigation"
 
 
-export const generateMetadata = async ({ searchParams }: ProductPageProps) => {
-    const id = searchParams.id
-    const products = await getProducts(id)
-    const product = products[0]
-
-    return {
-        title: product.title,
-        description: product.description,
-        keywords: product.tags,
-        openGraph: {
-            Image: [product.image],
-        }
-    }
+interface ProductPageProps {
+  searchParams: {
+    id: string
+  }
 }
-export default async function ProductPage({ searchParams }: ProductPageProps) {
-    const id = searchParams.id
-    const products = await getProducts(id)
-    const product = products[0]
 
-    if(!id){
-        redirect('/')
+export async function generateMetadata({ searchParams }: ProductPageProps) { 
+  const id = searchParams.id
+  const products = await getProducts(id)
+  const product = products[0]
+
+  return {
+    title: product.title,
+    description: product.description,
+    keywords: product.tags,
+    openGraph: {
+      images: [product.image]
     }
+  }
+}
 
-    return <ProductView product={product} />
+export default async function ProductPage({ searchParams }: ProductPageProps) {
+  const id = searchParams.id
+  const products = await getProducts(id)
+  const product = products[0]
+
+  if (!id) {
+    redirect('/')
+  }
+
+  return <ProductView product={product} />
 }

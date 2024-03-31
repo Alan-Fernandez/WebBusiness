@@ -1,5 +1,5 @@
-import { MainProducts } from "@/components/home/MainProducts";
-import { Metadata } from "next";
+import { MainProducts } from "app/components/home/MainProducts"
+import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "✨ Future world",
@@ -7,11 +7,10 @@ export const metadata: Metadata = {
   keywords: ["ecommerce", "future", "world","technology"],
 }
 
-
 export default function Home() {
   return (
     <main>
-      <MainProducts/>
+      <MainProducts />
     </main>
-  );
+  )
 }

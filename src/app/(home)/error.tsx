@@ -1,25 +1,25 @@
 "use client";
 
 import { useEffect } from "react";
-import {ErrorProps} from '@/components/ui/interface/productos'
+
+interface ErrorProps {
+  error: Error;
+  reset: () => void;
+}
 
 export default function Error({ error, reset }: ErrorProps) {
 
-useEffect(() => {
+  useEffect(() => {
     console.log(error)
-}, [])
+  }, [error])
 
-return (
+  return (
     <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh'
+      padding: '10rem',
     }}>
-    <h1>:c</h1>
-    <p>Ha ocurrido un error</p>
-    <button onClick={reset}>Intentar de nuevo</button>
+      <h1>:c</h1>
+      <p>Ha ocurrido un error</p>
+      <button onClick={reset}>Intentar de nuevo</button>
     </div>
-)
+  )
 }

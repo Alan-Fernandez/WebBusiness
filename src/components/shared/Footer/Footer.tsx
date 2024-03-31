@@ -1,7 +1,9 @@
-import React from 'react'
+import styles from './Footer.module.sass';
 
 export const Footer = () => {
-  return (
-    <div>Footer</div>
+  return(
+    <footer className={styles.Footer}>
+      <p>Future World © {new Date().getFullYear()}</p>
+    </footer>
   )
-}
+};
